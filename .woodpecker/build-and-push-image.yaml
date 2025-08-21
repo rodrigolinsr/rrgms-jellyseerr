@@ -1,6 +1,8 @@
 when:
   - event: cron
     cron: "build jellyseerr image"
+  - event: manual
+    branch: main
 
 steps:
   - name: build-and-push-image
