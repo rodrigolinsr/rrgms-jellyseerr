@@ -1,0 +1,17 @@
+when:
+  - event: cron
+    cron: "build jellyseerr image"
+
+steps:
+  - name: build-and-push-image
+    image: woodpeckerci/plugin-docker-buildx:6.0.2
+    settings:
+      repo: docker.infiniteloop.app/rrgms/jellyseerr
+      tags:
+        - latest
+      dockerfile: Dockerfile
+      registry: docker.infiniteloop.app
+      username:
+        from_secret: DOCKER_REGISTRY_USERNAME
+      password:
+        from_secret: DOCKER_REGISTRY_PASSWORD
